@@ -1,4 +1,4 @@
-package com.example;
+package org.FinchTheBird;
 
 import com.google.inject.Provides;
 import javax.inject.Inject;
@@ -12,17 +12,20 @@ import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 
+import java.util.Timer;
+
 @Slf4j
 @PluginDescriptor(
 	name = "Example"
 )
-public class ExamplePlugin extends Plugin
+public class AntiFireAlertPlugin extends Plugin
 {
+
 	@Inject
 	private Client client;
 
 	@Inject
-	private ExampleConfig config;
+	private AntiFireAlertConfig config;
 
 	@Override
 	protected void startUp() throws Exception
@@ -36,6 +39,7 @@ public class ExamplePlugin extends Plugin
 		log.info("Example stopped!");
 	}
 
+
 	@Subscribe
 	public void onGameStateChanged(GameStateChanged gameStateChanged)
 	{
@@ -46,8 +50,8 @@ public class ExamplePlugin extends Plugin
 	}
 
 	@Provides
-	ExampleConfig provideConfig(ConfigManager configManager)
+	AntiFireAlertConfig provideConfig(ConfigManager configManager)
 	{
-		return configManager.getConfig(ExampleConfig.class);
+		return configManager.getConfig(AntiFireAlertConfig.class);
 	}
 }
